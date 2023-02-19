@@ -11,4 +11,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        path: Sandbox
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Dummy run
+      working-directory: Sandbox
+      run: pytest -v .
